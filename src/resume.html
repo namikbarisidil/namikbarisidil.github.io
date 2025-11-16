@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baris Idil - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background: #fff;
+            padding: 20px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #2563eb;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            color: #1e40af;
+            margin-bottom: 5px;
+        }
+
+        .header .title {
+            font-size: 16px;
+            color: #6b7280;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .contact-info {
+            font-size: 11px;
+            color: #4b5563;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .section {
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            color: #1e40af;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-bottom: 2px solid #2563eb;
+            padding-bottom: 3px;
+            margin-bottom: 10px;
+        }
+
+        .summary {
+            font-size: 11px;
+            text-align: justify;
+            line-height: 1.5;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 12px;
+            page-break-inside: avoid;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+
+        .item-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .item-company {
+            font-size: 12px;
+            font-weight: 600;
+            color: #4b5563;
+        }
+
+        .item-period {
+            font-size: 10px;
+            color: #6b7280;
+            font-style: italic;
+        }
+
+        .item-details {
+            font-size: 10px;
+            margin-left: 15px;
+            line-height: 1.4;
+        }
+
+        .item-details li {
+            margin-bottom: 3px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            font-size: 10px;
+        }
+
+        .skill-category {
+            page-break-inside: avoid;
+        }
+
+        .skill-category-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: #374151;
+            margin-bottom: 3px;
+        }
+
+        .skill-tags {
+            color: #4b5563;
+            line-height: 1.4;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .section {
+                margin-bottom: 15px;
+            }
+
+            .header {
+                margin-bottom: 15px;
+            }
+
+            a {
+                color: #333;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>NAMIK BARIS IDIL</h1>
+        <div class="title">Software Engineering Leader & Solutions Architect</div>
+        <div class="contact-info">
+            <span>📧 <a href="mailto:namikbarisidil@gmail.com">namikbarisidil@gmail.com</a></span>
+            <span>🔗 <a href="https://linkedin.com/in/barisidil" target="_blank">linkedin.com/in/barisidil</a></span>
+            <span>💻 <a href="https://github.com/barisidil" target="_blank">github.com/barisidil</a></span>
+            <span>📍 Berlin, Germany</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Professional Summary</div>
+        <p class="summary">
+            Software architect with <span class="years-of-experience">19</span>+ years of experience building robust, scalable solutions with an academic foundation that bridges theory with practice. Proven track record in architecting event-driven microservices platforms, leading high-performing engineering teams, and delivering mission-critical systems for major retail and gaming clients. Expert in cloud-native architectures, CI/CD automation, and technical leadership. Passionate about innovation, combining deep technical expertise with strategic vision to drive business growth through technology.
+        </p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Professional Experience</div>
+
+        <div class="experience-item">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">Lead Engineer</div>
+                    <div class="item-company">Dunnhumby, Berlin</div>
+                </div>
+                <div class="item-period">November 2021 — Present</div>
+            </div>
+            <ul class="item-details">
+                <li>Spearheaded architectural design and development of mission-critical advertisement management platform serving major retail clients</li>
+                <li>Built and mentored high-performing engineering team through strategic hiring, technical coaching, and fostering culture of innovation</li>
+                <li>Architected event-driven microservices infrastructure on Google Cloud Platform using Kubernetes and containerized deployments</li>
+                <li>Drove technical excellence for company's highest revenue-generating system, directly impacting business growth</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">Senior Backend Engineer</div>
+                    <div class="item-company">Popcore, Berlin</div>
+                </div>
+                <div class="item-period">October 2020 — November 2021</div>
+            </div>
+            <ul class="item-details">
+                <li>Engineered robust and scalable backend infrastructure for mobile gaming platform supporting millions of concurrent users</li>
+                <li>Designed and implemented event-driven microservices architecture using NServiceBus and MassTransit</li>
+                <li>Optimized application performance through strategic caching with Redis and message queuing with RabbitMQ</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">Tech Lead</div>
+                    <div class="item-company">Dunnhumby, Berlin</div>
+                </div>
+                <div class="item-period">July 2019 — September 2020</div>
+            </div>
+            <ul class="item-details">
+                <li>Directed cross-functional engineering team delivering enterprise-grade advertisement management platform</li>
+                <li>Implemented CQRS pattern and event-driven architecture, improving system performance and separation of concerns</li>
+                <li>Established CI/CD pipelines using GitLab and containerization with Docker/Kubernetes</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">Solutions Architect</div>
+                    <div class="item-company">Knowledge Experts, Ankara</div>
+                </div>
+                <div class="item-period">February 2018 — June 2019</div>
+            </div>
+            <ul class="item-details">
+                <li>Led technical strategy and architectural vision for enterprise-scale applications serving government agencies</li>
+                <li>Designed microservices-based solutions utilizing MongoDB and Neo4j graph database</li>
+                <li>Established software engineering best practices and architectural guidelines across multiple teams</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">Team Lead</div>
+                    <div class="item-company">BITES Defence & Aerospace, Ankara</div>
+                </div>
+                <div class="item-period">January 2013 — December 2017</div>
+            </div>
+            <ul class="item-details">
+                <li>Directed software engineering team delivering mission-critical defense, aerospace, and training solutions</li>
+                <li>Architected multi-platform applications using WPF, Angular, and Xamarin with microservices on Azure</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">Software Developer & Lecturer</div>
+                    <div class="item-company">Ufuk University, Ankara</div>
+                </div>
+                <div class="item-period">October 2009 — December 2017</div>
+            </div>
+            <ul class="item-details">
+                <li>Managed software development team for comprehensive information management systems</li>
+                <li>Delivered 50+ courses covering programming, software engineering, AI, and parallel computing</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Education</div>
+
+        <div class="education-item">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">Master of Science in Computer Engineering</div>
+                    <div class="item-company">Baskent University, Ankara</div>
+                </div>
+                <div class="item-period">2006 — 2009</div>
+            </div>
+            <ul class="item-details">
+                <li>Full scholarship awarded for academic excellence • Thesis: Support Vector Machines and Gene Expression Data Analysis</li>
+                <li>Published peer-reviewed research article in Turkish Journal of Medical Sciences</li>
+            </ul>
+        </div>
+
+        <div class="education-item">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">Bachelor of Science in Computer Engineering</div>
+                    <div class="item-company">Baskent University, Ankara</div>
+                </div>
+                <div class="item-period">2002 — 2006</div>
+            </div>
+            <ul class="item-details">
+                <li>Graduation project: Artificial Neural Networks and Image Processing • Specialization in AI and Web Technologies</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Technical Skills</div>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <div class="skill-category-title">Languages & Frameworks</div>
+                <div class="skill-tags">C#, .NET/.NET Core, TypeScript, JavaScript, Python, Java, Java Spring, Node.js</div>
+            </div>
+            <div class="skill-category">
+                <div class="skill-category-title">Frontend Technologies</div>
+                <div class="skill-tags">React, Redux, Angular, Vue, HTML5, CSS3, Bootstrap</div>
+            </div>
+            <div class="skill-category">
+                <div class="skill-category-title">Cloud & DevOps</div>
+                <div class="skill-tags">Google Cloud (GCP), Azure, AWS, Kubernetes, Docker, Terraform, Jenkins, GitLab CI/CD, Argo CD</div>
+            </div>
+            <div class="skill-category">
+                <div class="skill-category-title">Architecture & Design</div>
+                <div class="skill-tags">Microservices, Event-Driven Architecture, CQRS, Design Patterns, RESTful APIs</div>
+            </div>
+            <div class="skill-category">
+                <div class="skill-category-title">Databases</div>
+                <div class="skill-tags">PostgreSQL, MS SQL Server, MongoDB, Neo4j, Redis, Entity Framework Core</div>
+            </div>
+            <div class="skill-category">
+                <div class="skill-category-title">Message Brokers & Tools</div>
+                <div class="skill-tags">RabbitMQ, Google PubSub, MassTransit, NServiceBus, SignalR</div>
+            </div>
+            <div class="skill-category">
+                <div class="skill-category-title">Monitoring & Testing</div>
+                <div class="skill-tags">Prometheus, New Relic, AppDynamics, XUnit, NUnit, Jest</div>
+            </div>
+            <div class="skill-category">
+                <div class="skill-category-title">AI & Machine Learning</div>
+                <div class="skill-tags">Support Vector Machines, Neural Networks, XGBoost, Data Analysis</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Publications</div>
+        <div class="item-details">
+            <li><strong>Books:</strong> "Bilinmeyene Yolculuk" (Science Fiction Novel), "Adaletin Keskin Kılıcı: Kral Arthur" (Novel)</li>
+            <li><strong>Research Article:</strong> "Development and validation of the Turkish version of the MNREAD visual acuity charts" - Turkish Journal of Medical Sciences, Vol. 41(4), 2011, DOI: 10.3906/sag-1008-1</li>
+        </div>
+    </div>
+
+    <script>
+        // Update years of experience dynamically
+        const careerStartYear = 2006;
+        const currentYear = new Date().getFullYear();
+        const yearsOfExperience = currentYear - careerStartYear;
+        document.querySelectorAll('.years-of-experience').forEach(element => {
+            element.textContent = yearsOfExperience;
+        });
+    </script>
+</body>
+</html>
