@@ -70,3 +70,55 @@ if (hero) {
     hero.style.opacity = '1';
     hero.style.transform = 'translateY(0)';
 }
+
+// Language Switcher
+const languageSwitcher = {
+    currentLang: 'en',
+    
+    init() {
+        // Check if language is saved in localStorage
+        const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+        this.switchLanguage(savedLang);
+        
+        // Add event listeners to language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const lang = e.target.getAttribute('data-lang');
+                this.switchLanguage(lang);
+            });
+        });
+    },
+    
+    switchLanguage(lang) {
+        this.currentLang = lang;
+        localStorage.setItem('preferredLanguage', lang);
+        
+        // Update active button
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            }
+        });
+        
+        // Update all elements with language data attributes
+        document.querySelectorAll('[data-lang-' + lang + ']').forEach(element => {
+            const text = element.getAttribute('data-lang-' + lang);
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.placeholder = text;
+            } else {
+                element.textContent = text;
+            }
+        });
+        
+        // Update HTML lang attribute
+        document.documentElement.lang = lang;
+    }
+};
+
+// Initialize language switcher when DOM is loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => languageSwitcher.init());
+} else {
+    languageSwitcher.init();
+}
