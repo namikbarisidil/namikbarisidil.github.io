@@ -107,7 +107,7 @@ const languageSwitcher = {
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 element.placeholder = text;
             } else {
-                element.textContent = text;
+                element.innerHTML = text;
             }
         });
         
@@ -232,3 +232,31 @@ if (mobileMenuToggle) {
         }
     });
 }
+
+// Calculate and update years of experience dynamically
+function updateYearsOfExperience() {
+    const careerStartYear = 2006; // Started as Research Assistant in September 2006
+    const currentYear = new Date().getFullYear();
+    const yearsOfExperience = currentYear - careerStartYear;
+    
+    // Update all elements with years of experience
+    document.querySelectorAll('.years-of-experience').forEach(element => {
+        element.textContent = yearsOfExperience;
+    });
+    
+    // Update meta description with dynamic years
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+        metaDescription.setAttribute('content', 
+            `Baris Idil - Software Engineering Leader with ${yearsOfExperience}+ years of experience in building scalable, event-driven platforms. Expert in microservices architecture, cloud solutions, and technical leadership.`
+        );
+    }
+    
+    // Update copyright year
+    document.querySelectorAll('.current-year').forEach(element => {
+        element.textContent = currentYear;
+    });
+}
+
+// Run on page load
+updateYearsOfExperience();
