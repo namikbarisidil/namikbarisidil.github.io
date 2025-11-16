@@ -57,7 +57,7 @@ html {
     font-weight: normal;
     color: #33ff33;
     background: transparent;
-    padding: 0.6rem 1.2rem;
+    padding: 0;
     border-radius: 2px;
     font-family: 'Courier New', 'Consolas', monospace;
     border: none;
@@ -69,7 +69,7 @@ html {
     letter-spacing: 0.05em;
     position: relative;
     overflow: visible;
-    line-height: 1.4;
+    line-height: 1.0;
     white-space: nowrap;
     flex-shrink: 0;
     min-width: 240px;
