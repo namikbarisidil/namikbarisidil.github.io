@@ -675,6 +675,7 @@
     <footer class="footer">
         <div class="container">
             <p>&copy; <span class="current-year"></span> Baris Idil. All rights reserved.</p>
+            <p class="version" id="site-version">v2.0.0</p>
         </div>
     </footer>
 
@@ -873,6 +874,21 @@
                 btn.style.transform = 'translateY(0)';
                 btn.style.backgroundColor = '#2563eb';
             });
+        </script>
+        <script>
+            // Load version dynamically (works on web server, falls back to hardcoded version for file://)
+            fetch('version.json')
+                .then(response => response.json())
+                .then(data => {
+                    const versionElement = document.getElementById('site-version');
+                    if (versionElement) {
+                        versionElement.textContent = `v${data.version}`;
+                    }
+                })
+                .catch(error => {
+                    // Silently fail - hardcoded version in HTML will be shown
+                    console.log('Using hardcoded version (fetch not available in file:// protocol)');
+                });
         </script>
         <script src="scripts/script.js"></script>
 </body>
