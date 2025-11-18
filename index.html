@@ -644,6 +644,9 @@
                         <span>🐦</span> Twitter
                     </a>
                 </div>
+                <p style="text-align: center; color: #6b7280; font-size: 0.95rem; margin-top: 1.5rem;">
+                    📍 Berlin, Germany
+                </p>
             </div>
         </div>
     </section>
@@ -808,6 +811,10 @@
                     <a href="https://x.com/FShieldheart" class="contact-link" target="_blank">
                         <span>🐦</span> Twitter
                     </a>
+                    <div class="contact-link" style="cursor: default; pointer-events: none;">
+                        <span>📍</span>
+                        <span style="font-size: 1rem;">Berlin, Germany</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -848,6 +855,40 @@
             "sameAs": "https://doi.org/10.3906/sag-1008-1",
             "url": "https://journals.tubitak.gov.tr/medical/vol41/iss4/1/"
         }
+        </script>
+        <script>
+            // Create button via JavaScript to ensure it appears
+            const btn = document.createElement('button');
+            btn.id = 'scrollToTop';
+            btn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>';
+            btn.style.cssText = 'position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background-color: #2563eb; color: white; border: none; border-radius: 50%; cursor: pointer; z-index: 99999; box-shadow: 0 4px 12px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s ease;';
+            document.body.appendChild(btn);
+            
+            // Add click handler
+            btn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Show/hide on scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    btn.style.opacity = '1';
+                    btn.style.visibility = 'visible';
+                } else {
+                    btn.style.opacity = '0';
+                    btn.style.visibility = 'hidden';
+                }
+            });
+            
+            // Add hover effect
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transform = 'translateY(-5px)';
+                btn.style.backgroundColor = '#1e40af';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translateY(0)';
+                btn.style.backgroundColor = '#2563eb';
+            });
         </script>
         <script src="scripts/script.js"></script>
 </body>
