@@ -675,7 +675,14 @@
     <footer class="footer">
         <div class="container">
             <p>&copy; <span class="current-year"></span> Baris Idil. All rights reserved.</p>
-            <p class="version" id="site-version">v2.0.0</p>
+            <p class="footer-links">
+                <span class="version" id="site-version">v2.0.0</span>
+                <span class="separator">•</span>
+                <a href="https://www.githubstatus.com/" target="_blank" rel="noopener noreferrer" class="status-link">
+                    <span class="status-indicator" id="status-indicator"></span>
+                    GitHub Status
+                </a>
+            </p>
         </div>
     </footer>
 
@@ -888,6 +895,36 @@
                 .catch(error => {
                     // Silently fail - hardcoded version in HTML will be shown
                     console.log('Using hardcoded version (fetch not available in file:// protocol)');
+                });
+
+            // Fetch GitHub status and update indicator
+            fetch('https://www.githubstatus.com/api/v2/status.json')
+                .then(response => response.json())
+                .then(data => {
+                    const statusLink = document.querySelector('.status-link');
+                    const indicator = document.getElementById('status-indicator');
+                    if (statusLink && indicator) {
+                        const status = data.status.indicator; // none, minor, major, critical
+                        const description = data.status.description;
+                        
+                        // Update indicator color and tooltip
+                        if (status === 'none') {
+                            indicator.className = 'status-indicator status-operational';
+                            statusLink.title = 'All Systems Operational';
+                        } else if (status === 'minor') {
+                            indicator.className = 'status-indicator status-minor';
+                            statusLink.title = description || 'Minor Issues';
+                        } else if (status === 'major') {
+                            indicator.className = 'status-indicator status-major';
+                            statusLink.title = description || 'Major Issues';
+                        } else if (status === 'critical') {
+                            indicator.className = 'status-indicator status-critical';
+                            statusLink.title = description || 'Critical Issues';
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.log('Could not fetch GitHub status');
                 });
         </script>
         <script src="scripts/script.js"></script>
