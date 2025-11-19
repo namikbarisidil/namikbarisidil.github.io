@@ -55,6 +55,23 @@
             text-decoration: none;
         }
 
+        .download-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background-color: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .download-btn:hover {
+            background-color: #1e40af;
+        }
+
         .section {
             margin-bottom: 18px;
         }
@@ -145,6 +162,10 @@
         }
 
         @media print {
+            .download-btn {
+                display: none;
+            }
+
             body {
                 padding: 0;
                 max-width: 100%;
@@ -167,6 +188,77 @@
             size: A4;
             margin: 15mm;
         }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #111827;
+            color: #f3f4f6;
+        }
+
+        body.dark-mode .header h1 {
+            color: #60a5fa;
+        }
+
+        body.dark-mode .header .title {
+            color: #9ca3af;
+        }
+
+        body.dark-mode .contact-info {
+            color: #d1d5db;
+        }
+
+        body.dark-mode .contact-info a {
+            color: #60a5fa;
+        }
+
+        body.dark-mode .section-title {
+            color: #60a5fa;
+            border-bottom-color: #60a5fa;
+        }
+
+        body.dark-mode .item-title {
+            color: #f3f4f6;
+        }
+
+        body.dark-mode .item-company {
+            color: #d1d5db;
+        }
+
+        body.dark-mode .item-period {
+            color: #9ca3af;
+        }
+
+        body.dark-mode .skill-category-title {
+            color: #e5e7eb;
+        }
+
+        body.dark-mode .skill-tags {
+            color: #d1d5db;
+        }
+
+        body.dark-mode .header {
+            border-bottom-color: #60a5fa;
+        }
+
+        /* Ensure print always uses light mode */
+        @media print {
+            body.dark-mode {
+                background-color: #fff;
+                color: #333;
+            }
+            
+            body.dark-mode .header h1 { color: #1e40af; }
+            body.dark-mode .header .title { color: #6b7280; }
+            body.dark-mode .contact-info { color: #4b5563; }
+            body.dark-mode .contact-info a { color: #2563eb; }
+            body.dark-mode .section-title { color: #1e40af; border-bottom-color: #2563eb; }
+            body.dark-mode .item-title { color: #1f2937; }
+            body.dark-mode .item-company { color: #4b5563; }
+            body.dark-mode .item-period { color: #6b7280; }
+            body.dark-mode .skill-category-title { color: #374151; }
+            body.dark-mode .skill-tags { color: #4b5563; }
+            body.dark-mode .header { border-bottom-color: #2563eb; }
+        }
     </style>
 </head>
 <body>
@@ -179,6 +271,7 @@
             <span>💻 <a href="https://github.com/namikbarisidil" target="_blank">github.com/namikbarisidil</a></span>
             <span>📍 Berlin, Germany</span>
         </div>
+        <a href="documents/baris-idil-resume.pdf" class="download-btn" download>Download PDF Version</a>
     </div>
 
     <div class="section">
@@ -414,6 +507,19 @@
         document.querySelectorAll('.years-of-experience').forEach(element => {
             element.textContent = yearsOfExperience;
         });
+
+        // Check for saved theme preference or system preference
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                document.body.classList.add('dark-mode');
+            }
+        }
+
+        // Run on load
+        initTheme();
     </script>
 </body>
 </html>
