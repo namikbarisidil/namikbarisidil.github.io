@@ -16,15 +16,20 @@ const blogPosts = [
 // Load blog posts on blog page
 if (document.getElementById('blogGrid')) {
     const blogGrid = document.getElementById('blogGrid');
+    const searchInput = document.getElementById('searchInput');
     let currentCategory = 'all';
-    // Store last used category for re-rendering on language change
+    let currentSearchTerm = '';
     
     function renderPosts(category = currentCategory) {
         blogGrid.innerHTML = '';
         
-        const filteredPosts = category === 'all' 
-            ? blogPosts 
-            : blogPosts.filter(post => post.category === category);
+        const filteredPosts = blogPosts.filter(post => {
+            const matchesCategory = category === 'all' || post.category === category;
+            const matchesSearch = post.title.toLowerCase().includes(currentSearchTerm.toLowerCase()) || 
+                                  post.excerpt.toLowerCase().includes(currentSearchTerm.toLowerCase()) ||
+                                  post.tags.some(tag => tag.toLowerCase().includes(currentSearchTerm.toLowerCase()));
+            return matchesCategory && matchesSearch;
+        });
         
         if (filteredPosts.length === 0) {
             const lang = localStorage.getItem('preferredLanguage') || 'en';
@@ -106,6 +111,14 @@ if (document.getElementById('blogGrid')) {
     window.addEventListener('languageChanged', () => {
         renderPosts(currentCategory);
     });
+
+    // Search input handler
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            currentSearchTerm = e.target.value.trim();
+            renderPosts(currentCategory);
+        });
+    }
 }
 
 // Update current year

@@ -10,37 +10,7 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html" style="text-decoration: none; color: inherit;">
-                    <span class="logo-line1">Building the Future</span><br>
-                    <span class="logo-line2">&gt; Execute? (Y/N)</span><span class="cursor">_</span>
-                </a>
-            </div>
-            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-links">
-                <li><a href="index.html#home">Home</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#projects">Experience</a></li>
-                <li><a href="index.html#education">Education</a></li>
-                <li><a href="index.html#publications">Books</a></li>
-                <li><a href="index.html#articles">Articles</a></li>
-                <li><a href="blog.html" class="active">Blog</a></li>
-                <li><a href="index.html#skills">Skills</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-            <div class="language-switcher">
-                <button class="lang-btn active" data-lang="en">EN</button>
-                <button class="lang-btn" data-lang="de">DE</button>
-                <button class="lang-btn" data-lang="tr">TR</button>
-            </div>
-        </div>
-    </nav>
+    <div id="navbar-placeholder"></div>
 
     <!-- Blog Header -->
     <section class="blog-header">
@@ -53,6 +23,14 @@
     <!-- Blog Posts -->
     <section class="blog-posts">
         <div class="container">
+            <!-- Search Bar -->
+            <div class="blog-search-container">
+                <div class="blog-search">
+                    <input type="text" id="searchInput" placeholder="Search articles..." aria-label="Search articles">
+                    <span class="search-icon">🔍</span>
+                </div>
+            </div>
+
             <!-- Category Filter -->
             <div class="blog-filter">
                 <button class="filter-btn active" data-category="all">
@@ -88,12 +66,14 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; <span class="current-year">2025</span> Baris Idil. All rights reserved.</p>
-        </div>
-    </footer>
+    <div id="footer-placeholder"></div>
 
+    <script src="scripts/layout.js"></script>
+    <script>
+        Layout.renderNavbar('navbar-placeholder', '', 'blog');
+        Layout.renderFooter('footer-placeholder');
+        Layout.initFooter('');
+    </script>
     <script src="scripts/script.js"></script>
     <script src="scripts/blog.js"></script>
 </body>
