@@ -66,6 +66,9 @@
             font-size: 12px;
             font-weight: 600;
             transition: background-color 0.2s;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
         }
 
         .download-btn:hover {
@@ -271,7 +274,7 @@
             <span>💻 <a href="https://github.com/namikbarisidil" target="_blank">github.com/namikbarisidil</a></span>
             <span>📍 Berlin, Germany</span>
         </div>
-        <a href="documents/baris-idil-resume.pdf" class="download-btn" download>Download PDF Version</a>
+        <button class="download-btn" onclick="downloadPDF()">Download PDF Version</button>
     </div>
 
     <div class="section">
@@ -499,15 +502,8 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        // Update years of experience dynamically
-        const careerStartYear = 2006;
-        const currentYear = new Date().getFullYear();
-        const yearsOfExperience = currentYear - careerStartYear;
-        document.querySelectorAll('.years-of-experience').forEach(element => {
-            element.textContent = yearsOfExperience;
-        });
-
         // Check for saved theme preference or system preference
         function initTheme() {
             const savedTheme = localStorage.getItem('theme');
@@ -520,6 +516,36 @@
 
         // Run on load
         initTheme();
+
+        function downloadPDF() {
+            const element = document.body;
+            const button = document.querySelector('.download-btn');
+            const wasDarkMode = document.body.classList.contains('dark-mode');
+
+            // Temporarily reset to light mode for the PDF
+            if (wasDarkMode) {
+                document.body.classList.remove('dark-mode');
+            }
+            
+            // Hide button
+            button.style.display = 'none';
+
+            const opt = {
+                margin:       [10, 10, 10, 10],
+                filename:     'Baris_Idil_Resume.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Restore state
+                if (wasDarkMode) {
+                    document.body.classList.add('dark-mode');
+                }
+                button.style.display = 'inline-block';
+            });
+        }
     </script>
 </body>
 </html>
