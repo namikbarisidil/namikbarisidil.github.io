@@ -79,12 +79,12 @@ if (hero) {
 // Language Switcher
 const languageSwitcher = {
     currentLang: 'en',
-    
+
     init() {
         // Check if language is saved in localStorage
         const savedLang = localStorage.getItem('preferredLanguage') || 'en';
         this.switchLanguage(savedLang);
-        
+
         // Add event listeners to language buttons
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -93,7 +93,7 @@ const languageSwitcher = {
             });
         });
     },
-    
+
     switchLanguage(lang) {
         this.currentLang = lang;
         localStorage.setItem('preferredLanguage', lang);
@@ -129,11 +129,59 @@ const languageSwitcher = {
     }
 };
 
+// Theme Switcher
+const themeSwitcher = {
+    currentTheme: 'light',
+
+    init() {
+        // Check for saved theme or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme) {
+            this.setTheme(savedTheme);
+        } else if (systemPrefersDark) {
+            this.setTheme('dark');
+        }
+
+        // Add event listener to toggle checkbox
+        // Use event delegation since checkbox might be added dynamically by layout.js
+        document.addEventListener('change', (e) => {
+            if (e.target.classList.contains('theme-toggle-checkbox')) {
+                this.toggleTheme();
+            }
+        });
+    },
+
+    setTheme(theme) {
+        this.currentTheme = theme;
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        this.updateCheckbox();
+    },
+
+    toggleTheme() {
+        const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+        this.setTheme(newTheme);
+    },
+
+    updateCheckbox() {
+        const checkbox = document.querySelector('.theme-toggle-checkbox');
+        if (!checkbox) return;
+
+        checkbox.checked = this.currentTheme === 'dark';
+    }
+};
+
 // Initialize language switcher when DOM is loaded
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => languageSwitcher.init());
+    document.addEventListener('DOMContentLoaded', () => {
+        languageSwitcher.init();
+        themeSwitcher.init();
+    });
 } else {
     languageSwitcher.init();
+    themeSwitcher.init();
 }
 
 // Typing animation for terminal logo
@@ -142,7 +190,7 @@ function typeTerminalText() {
     const line2 = document.querySelector('.logo-line2');
     const cursor = document.querySelector('.cursor');
     if (!line1 || !line2 || !cursor) return;
-    
+
     const currentLang = languageSwitcher.currentLang;
     const texts1 = {
         'en': 'Building the Future',
@@ -154,15 +202,15 @@ function typeTerminalText() {
         'de': '> Ausführen? (J/N)',
         'tr': '> Çalıştır? (E/H)'
     };
-    
+
     const fullText1 = texts1[currentLang];
     const fullText2 = texts2[currentLang];
     let charIndex = 0;
-    
+
     line1.textContent = '';
     line2.textContent = '';
     cursor.style.display = 'inline';
-    
+
     const typeInterval = setInterval(() => {
         if (charIndex < fullText1.length) {
             line1.textContent = fullText1.substring(0, charIndex + 1);
@@ -193,16 +241,16 @@ document.querySelectorAll('.experience-item, .education-item').forEach(card => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        
+
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
-        
+
         const rotateX = (y - centerY) / 20;
         const rotateY = (centerX - x) / 20;
-        
+
         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
     });
-    
+
     card.addEventListener('mouseleave', () => {
         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
     });
@@ -254,17 +302,17 @@ if (mobileMenuToggle) {
 }
 
 // Dropdown menu functionality - simplified
-(function() {
+(function () {
     function initDropdowns() {
         // Close dropdown when clicking on dropdown menu items
         const dropdownLinks = document.querySelectorAll('.dropdown-menu a');
-        
+
         dropdownLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 const dropdown = this.closest('.dropdown');
                 if (dropdown) {
                     dropdown.classList.add('force-hide');
-                    
+
                     // Remove force-hide after a delay
                     setTimeout(() => {
                         dropdown.classList.remove('force-hide');
@@ -272,7 +320,7 @@ if (mobileMenuToggle) {
                 }
             });
         });
-        
+
         // Mobile dropdown toggle
         const dropdowns = document.querySelectorAll('.dropdown');
         dropdowns.forEach(dropdown => {
@@ -301,20 +349,20 @@ function updateYearsOfExperience() {
     const careerStartYear = 2006; // Started as Research Assistant in September 2006
     const currentYear = new Date().getFullYear();
     const yearsOfExperience = currentYear - careerStartYear;
-    
+
     // Update all elements with years of experience
     document.querySelectorAll('.years-of-experience').forEach(element => {
         element.textContent = yearsOfExperience;
     });
-    
+
     // Update meta description with dynamic years
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-        metaDescription.setAttribute('content', 
+        metaDescription.setAttribute('content',
             `Baris Idil - Software Engineering Leader with ${yearsOfExperience}+ years of experience in building scalable, event-driven platforms. Expert in microservices architecture, cloud solutions, and technical leadership.`
         );
     }
-    
+
     // Update copyright year
     document.querySelectorAll('.current-year').forEach(element => {
         element.textContent = currentYear;
