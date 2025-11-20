@@ -27,6 +27,7 @@ const Layout = {
                 id: 'achievements',
                 dropdown: [
                     { name: 'Education', href: 'index.html#education', id: 'education', lang: { en: 'Education', de: 'Bildung', tr: 'Eğitim' } },
+                    { name: 'Languages', href: 'index.html#languages', id: 'languages', lang: { en: 'Languages', de: 'Sprachen', tr: 'Diller' } },
                     { name: 'Certifications', href: 'index.html#certifications', id: 'certifications', lang: { en: 'Certifications', de: 'Zertifizierungen', tr: 'Sertifikalar' } },
                     { name: 'Books', href: 'index.html#publications', id: 'publications', lang: { en: 'Books', de: 'Bücher', tr: 'Kitaplar' } },
                     { name: 'Articles', href: 'index.html#articles', id: 'articles', lang: { en: 'Articles', de: 'Artikel', tr: 'Makaleler' } }
