@@ -359,7 +359,7 @@ function updateYearsOfExperience() {
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
         metaDescription.setAttribute('content',
-            `Baris Idil - Software Engineering Leader with ${yearsOfExperience}+ years of experience in building scalable, event-driven platforms. Expert in microservices architecture, cloud solutions, and technical leadership.`
+            `Baris Idil - Software architect and engineering leader with ${yearsOfExperience}+ years of experience. Current focus: AI, GenAI and agentic systems; background in event-driven platforms and machine learning.`
         );
     }
 
@@ -374,3 +374,4 @@ updateYearsOfExperience();
 
 // Re-run when language changes (DE/TR translations recreate .years-of-experience spans)
 window.addEventListener('languageChanged', updateYearsOfExperience);
+
